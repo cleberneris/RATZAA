@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-neon-lime: #84f800;
+  --color-neon-glow: rgba(132, 248, 0, 0.4);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom glow utilities */
+.neon-glow-sm {
+  box-shadow: 0 0 15px rgba(132, 248, 0, 0.35);
+}
+
+.neon-glow-md {
+  box-shadow: 0 0 25px rgba(132, 248, 0, 0.5);
+}
+
+.neon-glow-lg {
+  box-shadow: 0 0 45px rgba(132, 248, 0, 0.65);
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 12px rgba(132, 248, 0, 0.6);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #84f800;
+}
+
+/* ========================================================= */
+/* INFINITE MARQUEE ANIMATIONS (FLAWLESS 0-JUMP LOOP)        */
+/* ========================================================= */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 34s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 34s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================================= */
+/* RATZA HERO TEXT ANIMATIONS & NEON GLOW EFFECTS            */
+/* ========================================================= */
+@keyframes word-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes neon-pulse-slow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(132, 248, 0, 0.4), 0 0 25px rgba(132, 248, 0, 0.25);
+    filter: drop-shadow(0 0 8px rgba(132, 248, 0, 0.4));
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(132, 248, 0, 0.9), 0 0 45px rgba(132, 248, 0, 0.7), 0 0 70px rgba(132, 248, 0, 0.4);
+    filter: drop-shadow(0 0 18px rgba(132, 248, 0, 0.85));
+  }
+}
+
+@keyframes subtitle-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-word-fade-up {
+  animation: word-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-neon-pulse-slow {
+  animation: neon-pulse-slow 3.2s ease-in-out infinite;
+}
+
+.animate-subtitle-fade {
+  animation: subtitle-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  animation-delay: 0.65s;
+}
+
+/* Accessible prefers-reduced-motion: disable animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-word-fade-up,
+  .animate-subtitle-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .animate-neon-pulse-slow {
+    animation: none !important;
+    text-shadow: 0 0 15px rgba(132, 248, 0, 0.6) !important;
+  }
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+    transform: none !important;
+  }
+}
