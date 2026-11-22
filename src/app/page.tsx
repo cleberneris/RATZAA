@@ -80,7 +80,7 @@ export default function Home() {
                 {/* ------------------------------------------------------- */}
                 <div className="flex flex-col items-start justify-center lg:col-span-4 xl:col-span-4 z-20">
                   {/* Main Headline - Word-by-word fade up (80ms staggered) */}
-                  <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-5xl xl:text-6xl leading-[1.08]">
+                  <h1 className="text-4xl font-extrabold tracking-tight text-white uppercase sm:text-5xl lg:text-5xl xl:text-6xl leading-[1.08]">
                     {/* Line 1: Ligue, acelere */}
                     <span className="block">
                       <span
